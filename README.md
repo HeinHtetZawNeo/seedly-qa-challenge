@@ -1,0 +1,1 @@
+# seedly-qa-challenge
