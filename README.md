@@ -1,70 +1,92 @@
 # Installation
-
 ```bash
 ## install all dependencies
 npm install
 ```
-
 # Opening Cypress GUI
-
 ```bash
 # open Cypress GUI
 npx cypress open
 ```
 
 # Running from the CLI
-
 Same as running Cypress GUI but with the `cypress run` command (and any CLI arguments)
-
 ```bash
 # Cypress tests headlessly
 npx cypress run
 ```
 
 # Testcase List
-
 ## tcs-1: Search Existing Product with full name
-
 ### Test Description
-
 - Find the existing product.
 - Product Detail page should available.
-
 ### Precondition
-
 - Product item "Singtel Dash PET" should exist.
 
-### Test Steps and expected Result
-
-1. Go to Review Page (https://seedly.sg/reviews).
-2. Type "Singtel Dash PET" in the search box.
-3. Click the "View More" button.
-
-### Test Expected Result
-
-1. Review Page Should have a search box.
-2. "Singtel Dash PET" product should show, and the "View More" button should exist for the product.
-3. Page should lead to Product Detail Page.
+| Test Steps |Expected Result  |
+|--|--|
+|Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
+|Type "Singtel Dash PET" in the search box.|"Singtel Dash PET" product should show, and the "View More" button should exist for the product.|
+|Click the "View More" button.|Page should lead to Product Detail Page.|
 
 ## tcs-2: Search Existing Product with partial name
-
 ### Test Description
-
 - Find the existing product.
 - Product Detail page should available.
-
 ### Precondition
-
 - Product item "Singtel Dash PET" should exist.
 
-### Test Steps and expected Result
+| Test Steps |Expected Result  |
+|--|--|
+|Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
+|Type "Singtel" in the search box.|"Singtel Dash PET" product should show, and the "View More" button should exist for the product.|
+|Click the "View More" button.|Page should lead to Product Detail Page.|
 
-1. Go to Review Page (https://seedly.sg/reviews).
-2. Type "Singtel Dash PET" in the search box.
-3. Click the "View More" button.
+## tcs-3: Search Existing Product with partial name with white spaces end of the string
+### Test Description
+- Find the existing product.
+- Product Detail page should available.
+### Precondition
+- Product item "Singtel Dash PET" should exist.
 
-### Test Expected Result
+| Test Steps |Expected Result  |
+|--|--|
+|Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
+|Type "Singtel                " in the search box.|"Singtel Dash PET" product should show, and the "View More" button should exist for the product.|
+|Click the "View More" button.|Page should lead to Product Detail Page.|
 
-1. Review Page Should have a search box.
-2. "Singtel Dash PET" product should show, and the "View More" button should exist for the product.
-3. Page should lead to Product Detail Page.
+## tcs-4: Search Existing Product with partial name with white spaces start of the string
+### Test Description
+- Find the existing product.
+- Product Detail page should available.
+### Precondition
+- Product item "Singtel Dash PET" should exist.
+
+| Test Steps |Expected Result  |
+|--|--|
+|Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
+|Type "                Singtel" in the search box.|"Singtel Dash PET" product should show, and the "View More" button should exist for the product.|
+|Click the "View More" button.|Page should lead to Product Detail Page.
+
+## tcs-5: Search Non-existing Product with normal string
+### Test Description
+- Find the non-existing product.
+### Precondition
+- Product item "Testing" should not exist.
+
+| Test Steps |Expected Result  |
+|--|--|
+|Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
+|Type "Testing" in the search box.|"0 product Found" and "No products found!" should show|
+
+## tcs-6: Search Non-existing Product with special char string
+### Test Description
+- Search with special char
+### Precondition
+- NA
+
+| Test Steps |Expected Result  |
+|--|--|
+|Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
+|Type "@$%*(%^($#&*$" in the search box.|"0 product Found" and "No products found!" should show|
