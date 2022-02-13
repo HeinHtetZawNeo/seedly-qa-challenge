@@ -16,6 +16,10 @@ Same as running Cypress GUI but with the `cypress run` command (and any CLI argu
 npx cypress run
 ```
 
+# Package
+## Cypress-xpath
+- To able to use xpath
+
 # Testcase List
 ## tcs-1: Search Existing Product with full name
 ### Test Description
@@ -170,3 +174,9 @@ npx cypress run
 |--|--|
 |Go to Review Page (https://seedly.sg/reviews).  |Review Page Should have a search box.|
 |Type "@$%*(%^($#&*$" in the search box.|"0 product Found" and "No products found!" should show|
+
+
+# Difficulty and Challenges
+- When user click on “View More” button, it is open with new tab.
+    - Cypress doesn’t allow handling of new browser tabs
+    - Solution: remove target attribute from the <a> element and then click on it
